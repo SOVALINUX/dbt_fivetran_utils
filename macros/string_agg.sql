@@ -25,3 +25,9 @@
     replace(replace(replace(cast( collect_set({{ field_to_agg }}) as string), '[', ''), ']', ''), ', ', {{ delimiter }} )
 
 {% endmacro %}
+
+{% macro athena__string_agg(field_to_agg, delimiter) %}
+    -- collect set will remove duplicates
+    replace(replace(replace(cast( collect_set({{ field_to_agg }}) as string), '[', ''), ']', ''), ', ', {{ delimiter }} )
+
+{% endmacro %}
